@@ -121,6 +121,20 @@ nav {
     font-size: var(--main-font-size);
 }
 
+@media (max-width: 600px) {
+    .nav-link {
+        display: none;
+    }
+    .nova-mobile {
+        display: block ;
+    }
+    .nav-search {
+        display: none;
+    }
+}
+
+
+
 .nav-link li {
     display: flex;
     align-items: center;
@@ -169,7 +183,9 @@ nav {
 .card-nov h3,p {
     color: var(--main1-back-color);
     font-family: 'Open Sans', sans-serif;
+    line-height: 150% ;
 }
+
 
 .card-nov h3 {
     font-weight: 400;
@@ -279,8 +295,11 @@ nav {
 
 .post-Servics {
     display: grid;
-    grid-template-columns: repeat(2 , 1fr);
-    margin: 50px auto  90px auto;;
+    grid-template-columns: repeat(auto-fill , minmax(400px , 1fr));
+    margin: 50px auto  90px auto;
+    align-content: center;
+    justify-items: center;
+    padding: 0 15px;
 }
 
 .card {
@@ -366,8 +385,17 @@ figure:nth-child(2) {
     right: 0;
     top: 50%;
     transform: translateY(-150px);
-    width: 600px;
+    width: 800px;
     height: 300px;
+}
+@media screen and (max-width: 800px) {
+    .view-img {
+        right: 0;
+    }
+    .view-slide {
+        width: 100%;
+        height: 300px;
+    }
 }
 
 .view-slide::after {
@@ -403,11 +431,22 @@ figure:nth-child(2) {
     display: flex;
     justify-content: center;
 }
+
 .menu-card ul {
     display: flex;
     gap: 25px;
 }
 
+@media (max-width: 500px) {
+
+    .menu-card ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .menu-card ul li {
+        text-align: center;
+    }
+}
 .menu-card ul li {
     padding: 5px 10px ;
     color: var(--color-img);
@@ -426,20 +465,13 @@ figure:nth-child(2) {
 
 .grid-img {
     background-color: var(--main2-back-color);
-    height: 500px;
-    width: 100%;
     margin: 25px 0;
-    position: relative;
 }
 
 .grid-content {
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    height: 500px;
-    width: 100%;
-    top: 0;
-    position: absolute;
-    z-index: 1;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-auto-rows: 200px 200px ;
 }
 
 .grid-card {
@@ -449,6 +481,7 @@ figure:nth-child(2) {
     position: relative;
     cursor: pointer;
 }
+
 
 .grid-card:hover .grid-card-text {
     transform: translateY(0);
@@ -462,13 +495,10 @@ figure:nth-child(2) {
     flex: 5;
 }
 
-.even1:nth-child(even) {
+.grid-card:nth-child(2n-3) {
     background-color: #dbdbdb56;
 }
 
-.even2:nth-child(odd) {
-    background-color: #dbdbdb56;
-}
 
 .grid-card-text {
     position: absolute;
@@ -588,11 +618,12 @@ figure:nth-child(2) {
     height: 300px;
     position: relative;
     z-index: -1;
+    overflow: hidden;
 }
 
 .about-screens .about-screens-img figure {
     position: absolute;
-    right: 50%;
+    right: 47%;
 }
 
 .about-screens .about-screens-img .img-laptop {
@@ -694,12 +725,12 @@ figure:nth-child(2) {
 }
 
 .card-statistic div h4  {
-    font-size: 50px;
+    font-size: clamp(30px, 3vw, 50px);
     margin: 20px 0 18px 0;
 }
 
 .card-statistic div p  {
-    font-size: 12px;
+    font-size: clamp(9px, 2vw, 12px);
     margin: 0;
 }
 
@@ -736,9 +767,16 @@ figure:nth-child(2) {
 
 .post-flex {
     display: flex;
-    margin: 35px auto;
-    height: 500px;
+    margin: 35px auto 0 auto;
+    /* height: 500px; */
     gap: 70px;
+    padding: 40px;
+}
+
+@media (max-width: 900px) {
+    .post-flex {
+        flex-direction: column;
+    }
 }
 
 .post-flex :is(.card-testimonials, .card-skills) {
@@ -746,8 +784,6 @@ figure:nth-child(2) {
 }
 
 .post-testimonials  {
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -843,7 +879,7 @@ figure:nth-child(2) {
 .quote {
     height: 300px;
     background-color: var(--main2-back-color);
-    margin: 100px 0;
+
 }
 
 .quote > div {
@@ -866,6 +902,23 @@ figure:nth-child(2) {
 .price-flex {
     display: flex;
     gap: 15px;
+}
+
+@media (max-width: 700px) {
+    .price-flex {
+        flex-direction: column;
+        padding: 30px;
+        position: relative;
+    }
+    .card-price {
+        margin: 25px 0;
+    }
+    .card-price::after {
+        content: "";
+        position: absolute;
+        border-top: 10px solid var(--color);
+        width: 100%;
+    }
 }
 
 .price-flex .card-price {
@@ -936,7 +989,6 @@ figure:nth-child(2) {
 
 .btn-contact  {
     text-align: center;
-    margin: 80px auto;
 }
 
 .btn-contact p  {
@@ -955,16 +1007,21 @@ figure:nth-child(2) {
 
 .post-subscribe {
     background-color: var(--main2-back-color);
-    height: 250px;
     margin: 45px 0;
 }
 
 .card-subscribe {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 25px;
-    padding: 0 39px;
+    padding: 39px;
+}
+
+
+@media (max-width: 700px) {
+    .card-subscribe {
+        flex-direction: column;
+    }
 }
 
 .card-subscribe > div {
@@ -978,6 +1035,7 @@ figure:nth-child(2) {
 .mail-part {
     border: var(--color2) solid 1px;
     position: relative;
+    width: 100%;
 }
 
 .mail-part input[type="email"] {
@@ -1023,11 +1081,21 @@ figure:nth-child(2) {
     left: 15px;
     transform: translateY(-50%);
     color: #eeeeeed1;
-}   
+}
 
 .post-contact-flex {
     display: flex;
     gap: 25px;
+    padding: 25px;
+}
+
+
+@media (max-width: 700px) {
+    .post-contact-flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
 }
 
 .contact-input {
@@ -1035,6 +1103,7 @@ figure:nth-child(2) {
     flex-direction: column;
     flex: 5;
     margin: 0 25px;
+    width: 100%;
 }
 
 .contact-info {
@@ -1043,9 +1112,10 @@ figure:nth-child(2) {
     flex: 2;
     margin: 0 15px;
     gap: 55px;
+    width: 100%;
 }
 
-.contact-input input { 
+.contact-input input {
     height: 45px;
     margin: 20px 0;
     padding: 25px;
@@ -1084,9 +1154,6 @@ figure:nth-child(2) {
     line-height: 20px;
 }
 
-.conBut {
-    margin: 30px 0;
-}
 
 footer {
     background-color: var(--main2-back-color);
